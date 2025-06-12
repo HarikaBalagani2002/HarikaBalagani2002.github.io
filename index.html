@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harika Bhavani Balagani - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section Cards */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Skills Visualization */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff, #e8edff);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Project Cards */
+        .project {
+            background: linear-gradient(135deg, #f8f9ff, #e8edff);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateX(10px);
+        }
+
+        .project h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-tech {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #f8f9ff, #e8edff);
+            border-radius: 15px;
+            padding: 20px;
+            margin-left: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        /* Interactive Demo Section */
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .api-demo {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            margin: 10px;
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+        }
+
+        .demo-output {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin-top: 15px;
+            min-height: 50px;
+            white-space: pre-wrap;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Harika Bhavani Balagani</h1>
+            <p class="subtitle">Software Engineer & Full Stack Developer</p>
+            <p class="tagline">Crafting scalable applications with modern technologies. Passionate about clean code, microservices architecture, and delivering exceptional user experiences.</p>
+            <div class="contact-info">
+                <a href="tel:913-222-6038" class="contact-item">
+                    📞 913-222-6038
+                </a>
+                <a href="mailto:harikabhavanibalagani@gmail.com" class="contact-item">
+                    ✉️ harikabhavanibalagani@gmail.com
+                </a>
+                <span class="contact-item">
+                    📍 Kansas, USA
+                </span>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="demo-section">
+            <h2 class="section-title">🚀 Live Tech Demonstration</h2>
+            <p style="margin-bottom: 20px; color: #666;">Experience my technical skills through interactive demonstrations:</p>
+            
+            <div class="api-demo">
+                <h4>RESTful API Simulation</h4>
+                <p>Simulate a Spring Boot microservice API call:</p>
+                <button class="demo-button" onclick="simulateAPI()">GET /api/users</button>
+                <button class="demo-button" onclick="simulateAuth()">POST /api/auth</button>
+                <button class="demo-button" onclick="simulateDatabase()">Database Query</button>
+                <div class="demo-output" id="api-output">Click a button to see API response simulation...</div>
+            </div>
+
+            <div class="api-demo">
+                <h4>Algorithm Visualization</h4>
+                <p>See sorting algorithms in action:</p>
+                <button class="demo-button" onclick="sortDemo()">Quick Sort Demo</button>
+                <button class="demo-button" onclick="searchDemo()">Binary Search</button>
+                <div class="demo-output" id="algo-output">Ready to demonstrate algorithms...</div>
+            </div>
+        </section>
+
+        <!-- Skills & Experience Grid -->
+        <div class="section-grid">
+            <!-- Technical Skills -->
+            <div class="section-card">
+                <h3 class="section-title">💻 Technical Arsenal</h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Backend Mastery</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Hibernate</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frontend Excellence</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">JavaScript ES6+</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Cloud & DevOps</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Jenkins</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database & Testing</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">JUnit</span>
+                            <span class="skill-tag">Selenium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="section-card">
+                <h3 class="section-title">🏢 Professional Journey</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 style="color: #667eea; margin-bottom: 5px;">Software Developer</h4>
+                        <p style="color: #888; font-size: 0.9rem; margin-bottom: 10px;">Zensar Technologies, India | Jan 2022 - Aug 2023</p>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>🔧 Architected RESTful APIs with Spring Boot serving 10K+ daily requests</li>
+                            <li>🎨 Built responsive Angular SPAs with 95% user satisfaction</li>
+                            <li>⚡ Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                            <li>🔒 Integrated advanced security with Spring Security & MFA</li>
+                            <li>📊 Optimized Oracle SQL queries improving performance by 40%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Showcase -->
+        <div class="section-card">
+            <h3 class="section-title">🚀 Featured Projects</h3>
+            
+            <div class="project">
+                <h4>🏥 Secure Health Records Management System</h4>
+                <p class="project-tech">Java • Spring Boot • Angular • Oracle SQL • GitLab CI/CD • Microsoft Entra MFA</p>
+                <p>Enterprise-grade healthcare application with end-to-end encryption, role-based access control, and HIPAA compliance. Features include real-time patient data synchronization, automated backup systems, and comprehensive audit trails.</p>
+            </div>
+
+            <div class="project">
+                <h4>🎓 AI-Powered Learning Management System</h4>
+                <p class="project-tech">Spring Boot • React.js • TensorFlow • AWS Lambda • PostgreSQL</p>
+                <p>Intelligent course platform with personalized learning paths, automated assessment generation, and ML-driven progress tracking. Supports 50K+ concurrent users with 99.9% uptime.</p>
+            </div>
+
+            <div class="project">
+                <h4>💬 Real-Time Collaboration Hub</h4>
+                <p class="project-tech">WebSocket • Spring Boot • Angular • RxJS • Redis • Docker</p>
+                <p>Multi-tenant collaboration platform with instant messaging, file sharing, video calls, and team productivity analytics. Handles 1M+ messages daily with sub-100ms latency.</p>
+            </div>
+
+            <div class="project">
+                <h4>🛡️ Automated Security Testing Framework</h4>
+                <p class="project-tech">Selenium • REST Assured • TestNG • GitLab CI/CD • OWASP ZAP</p>
+                <p>Comprehensive security testing suite with automated vulnerability scanning, penetration testing, and compliance reporting. Reduced security testing time by 80%.</p>
+            </div>
+
+            <div class="project">
+                <h4>📊 Microservices Monitoring Dashboard</h4>
+                <p class="project-tech">Spring Cloud • Kubernetes • Prometheus • Grafana • ELK Stack</p>
+                <p>Real-time monitoring solution for distributed systems with custom metrics, alerting, and predictive analysis. Monitors 100+ microservices across multiple environments.</p>
+            </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="section-grid">
+            <div class="section-card">
+                <h3 class="section-title">🎓 Education</h3>
+                <div class="project">
+                    <h4>Master's in Computer Science</h4>
+                    <p class="project-tech">University of Central Missouri</p>
+                    <p>Advanced coursework in algorithms, distributed systems, and software architecture.</p>
+                </div>
+                <div class="project">
+                    <h4>Bachelor of Technology - Computer Science</h4>
+                    <p class="project-tech">RGUKT(APIIIT), Nuzvid</p>
+                    <p>Strong foundation in programming, data structures, and system design.</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h3 class="section-title">🏆 Professional Highlights</h3>
+                <div style="color: #666; line-height: 1.8;">
+                    <p>🌟 <strong>Performance Excellence:</strong> Consistently delivered projects 20% ahead of schedule</p>
+                    <p>🔧 <strong>Innovation Leader:</strong> Introduced automation reducing manual testing by 70%</p>
+                    <p>👥 <strong>Team Collaboration:</strong> Mentored 5+ junior developers in best practices</p>
+                    <p>🚀 <strong>Scalability Expert:</strong> Designed systems handling 100K+ concurrent users</p>
+                    <p>🛡️ <strong>Security Focused:</strong> Implemented zero-vulnerability deployment pipelines</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // API Simulation Functions
+        function simulateAPI() {
+            const output = document.getElementById('api-output');
+            output.textContent = 'Loading...';
+            
+            setTimeout(() => {
+                output.textContent = `HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "role": "user"
+    }
+  ],
+  "total": 2,
+  "timestamp": "${new Date().toISOString()}"
+}`;
+            }, 1500);
+        }
+
+        function simulateAuth() {
+            const output = document.getElementById('api-output');
+            output.textContent = 'Authenticating...';
+            
+            setTimeout(() => {
+                output.textContent = `HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "status": "success",
+  "message": "Authentication successful",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expires_in": 3600,
+  "user": {
+    "id": 123,
+    "username": "harika.balagani",
+    "permissions": ["read", "write", "admin"]
+  },
+  "timestamp": "${new Date().toISOString()}"
+}`;
+            }, 2000);
+        }
+
+        function simulateDatabase() {
+            const output = document.getElementById('api-output');
+            output.textContent = 'Executing SQL query...';
+            
+            setTimeout(() => {
+                output.textContent = `Query: SELECT u.name, p.title, COUNT(o.id) as order_count
+FROM users u 
+JOIN products p ON u.id = p.user_id 
+LEFT JOIN orders o ON u.id = o.user_id 
+GROUP BY u.id, p.id
+ORDER BY order_count DESC;
+
+Results (3 rows, 0.045 seconds):
+┌─────────────┬─────────────────┬─────────────┐
+│ name        │ title           │ order_count │
+├─────────────┼─────────────────┼─────────────┤
+│ Alice Brown │ Premium Service │     156     │
+│ Bob Johnson │ Standard Plan   │      89     │
+│ Carol Davis │ Basic Package   │      34     │
+└─────────────┴─────────────────┴─────────────┘`;
+            }, 1800);
+        }
+
+        function sortDemo() {
+            const output = document.getElementById('algo-output');
+            const arr = [64, 34, 25, 12, 22, 11, 90];
+            output.textContent = `Initial Array: [${arr.join(', ')}]\n\nQuick Sort Steps:`;
+            
+            let step = 1;
+            const steps = [
+                'Choosing pivot: 12',
+                'Partitioning: [11] | 12 | [64, 34, 25, 22, 90]',
+                'Left partition: [11] (sorted)',
+                'Right partition: [64, 34, 25, 22, 90]',
+                'Choosing pivot: 25',
+                'Partitioning: [22] | 25 | [64, 34, 90]',
+                'Final sorted: [11, 12, 22, 25, 34, 64, 90]'
+            ];
+            
+            const interval = setInterval(() => {
+                if (step <= steps.length) {
+                    output.textContent += `\nStep ${step}: ${steps[step-1]}`;
+                    step++;
+                } else {
+                    clearInterval(interval);
+                    output.textContent += '\n\n✅ Sorting completed! Time complexity: O(n log n)';
+                }
+            }, 800);
+        }
+
+        function searchDemo() {
+            const output = document.getElementById('algo-output');
+            const arr = [2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 78];
+            const target = 23;
+            
+            output.textContent = `Binary Search for ${target} in:\n[${arr.join(', ')}]\n\nSearch Steps:`;
+            
+            let step = 1;
+            const steps = [
+                'Low: 0, High: 10, Mid: 5, arr[5] = 23',
+                '23 == 23 ✅ Target found!',
+                'Index: 5, Comparisons: 1',
+                'Time Complexity: O(log n)'
+            ];
+            
+            const interval = setInterval(() => {
+                if (step <= steps.length) {
+                    output.textContent += `\nStep ${step}: ${steps[step-1]}`;
+                    step++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.section-card, .project').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
