@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harika Bhavani Balagani - Software Engineer</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harika Bhavani Balagani - Software Engineer</title>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +15,9 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            color: #1a1a1a; /* Darker text for better contrast */
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
@@ -49,6 +51,93 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: none;
+            padding: 12px 16px;
+            border-radius: 25px;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            min-width: 90px;
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .nav-button.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            max-width: 90vw;
+            overflow-x: auto;
+        }
+
+        .mobile-nav-buttons {
+            display: flex;
+            gap: 8px;
+            min-width: fit-content;
+        }
+
+        .mobile-nav-button {
+            background: transparent;
+            border: none;
+            padding: 12px;
+            border-radius: 20px;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-nav-button:hover,
+        .mobile-nav-button.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* Section targeting */
+        section {
+            scroll-margin-top: 80px;
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
@@ -56,42 +145,44 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 60px 40px;
-            margin-bottom: 30px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             animation: slideInUp 1s ease-out;
+            line-height: 1.1;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
-            color: #666;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #333;
+            font-weight: 600;
             margin-bottom: 20px;
             animation: slideInUp 1s ease-out 0.2s both;
         }
 
         .hero .tagline {
-            font-size: 1.1rem;
-            color: #888;
-            max-width: 600px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #555;
+            max-width: 700px;
             margin: 0 auto 30px;
-            line-height: 1.6;
+            line-height: 1.7;
             animation: slideInUp 1s ease-out 0.4s both;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
             animation: slideInUp 1s ease-out 0.6s both;
         }
@@ -100,28 +191,28 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #667eea;
+            color: #333;
             text-decoration: none;
             transition: transform 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            padding: 10px 16px;
+            border-radius: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            font-weight: 500;
         }
 
         .contact-item:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+            background: rgba(102, 126, 234, 0.2);
         }
 
-        /* Section Cards */
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
+        /* Section Cards - Full Width */
         .section-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
@@ -129,129 +220,199 @@
         }
 
         .section-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
         }
 
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
+            gap: 12px;
+        }
+
+        /* Skills Section */
+        .skills-intro {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-group {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .skill-group:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-group h4 {
+            color: #222;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        /* Skills Visualization */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #f8f9ff, #e8edff);
-            border-radius: 15px;
-            padding: 20px;
-            border-left: 4px solid #667eea;
-        }
-
-        .skill-category h4 {
+        .skill-item {
+            background: white;
             color: #333;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            animation: pulse 2s infinite;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 2px solid #e0e7ff;
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+            border-color: #667eea;
+        }
+
+        /* Experience Section */
+        .experience-intro {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .job-card {
+            background: #f8f9ff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .job-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .job-header {
+            margin-bottom: 20px;
+        }
+
+        .job-title {
+            color: #222;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .job-company {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .job-duration {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .job-summary {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-list li {
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .achievement-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
         /* Project Cards */
         .project {
-            background: linear-gradient(135deg, #f8f9ff, #e8edff);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
+            background: #f8f9ff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
         }
 
         .project:hover {
-            transform: translateX(10px);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
         }
 
         .project h4 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            color: #222;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .project-tech {
             color: #667eea;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .project p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #f8f9ff, #e8edff);
-            border-radius: 15px;
-            padding: 20px;
-            margin-left: 15px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -22px;
-            top: 20px;
-            width: 12px;
-            height: 12px;
-            background: #667eea;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px #667eea;
+            color: #333;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* Interactive Demo Section */
@@ -260,7 +421,7 @@
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 10;
@@ -268,9 +429,30 @@
 
         .api-demo {
             background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid #e9ecef;
+        }
+
+        .api-demo h4 {
+            color: #222;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .api-demo p {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .demo-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .demo-button {
@@ -281,8 +463,10 @@
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
+            font-size: 1rem;
             transition: transform 0.3s ease;
-            margin: 10px;
+            flex: 1;
+            min-width: 140px;
         }
 
         .demo-button:hover {
@@ -292,12 +476,15 @@
         .demo-output {
             background: #2d3748;
             color: #68d391;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: monospace;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
             margin-top: 15px;
-            min-height: 50px;
+            min-height: 60px;
             white-space: pre-wrap;
+            overflow-x: auto;
+            border: 2px solid #4a5568;
         }
 
         /* Animations */
@@ -313,32 +500,117 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 1024px) {
+            .nav-menu {
+                top: 15px;
+                right: 15px;
+                gap: 6px;
             }
             
-            .hero .subtitle {
-                font-size: 1.2rem;
+            .nav-button {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                min-width: 80px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-bottom: 120px;
+            }
+            
+            .hero {
+                padding: 35px 25px;
+                margin-bottom: 30px;
             }
             
             .contact-info {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
             
-            .section-grid {
+            .section-card {
+                padding: 30px 25px;
+                margin-bottom: 30px;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .demo-section {
+                padding: 30px 25px;
+            }
+
+            .demo-buttons {
+                flex-direction: column;
+            }
+
+            .demo-button {
+                flex: none;
+                width: 100%;
+            }
+
+            .job-card, .project {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
             
-            .skills-container {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 30px 20px;
+            }
+            
+            .section-card {
+                padding: 25px 18px;
+            }
+            
+            .demo-section {
+                padding: 25px 18px;
+            }
+            
+            .mobile-nav {
+                bottom: 15px;
+                padding: 10px;
+            }
+            
+            .mobile-nav-button {
+                padding: 10px;
+                font-size: 1rem;
+                min-width: 40px;
+                height: 40px;
+            }
+
+            .job-card, .project {
+                padding: 20px 15px;
+            }
+
+            .api-demo {
+                padding: 20px 15px;
             }
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
@@ -347,187 +619,181 @@
 
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 4px;
+            border-radius: 5px;
         }
     </style>
-</head>
-<body>
-    <div class="particles"></div>
-    
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Harika Bhavani Balagani</h1>
-            <p class="subtitle">Software Engineer & Full Stack Developer</p>
-            <p class="tagline">Crafting scalable applications with modern technologies. Passionate about clean code, microservices architecture, and delivering exceptional user experiences.</p>
-            <div class="contact-info">
-                <a href="tel:913-222-6038" class="contact-item">
+<style>
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style></head>
+<body><main role="main"><nav class="nav-menu" role="navigation">
+<button class="nav-button" onclick="scrollToSection('hero')" tabindex="0">Home</button>
+<button class="nav-button" onclick="scrollToSection('demo')" tabindex="0">Demo</button>
+<button class="nav-button" onclick="scrollToSection('skills')" tabindex="0">Skills</button>
+<button class="nav-button" onclick="scrollToSection('experience')" tabindex="0">Experience</button>
+<button class="nav-button" onclick="scrollToSection('projects')" tabindex="0">Projects</button>
+<button class="nav-button" onclick="scrollToSection('education')" tabindex="0">Education</button>
+</nav><nav class="mobile-nav">
+<div class="mobile-nav-buttons">
+<button class="mobile-nav-button" onclick="scrollToSection('hero')" tabindex="0" title="Home">🏠</button>
+<button class="mobile-nav-button" onclick="scrollToSection('demo')" tabindex="0" title="Demo">🚀</button>
+<button class="mobile-nav-button" onclick="scrollToSection('skills')" tabindex="0" title="Skills">💻</button>
+<button class="mobile-nav-button" onclick="scrollToSection('experience')" tabindex="0" title="Experience">🏢</button>
+<button class="mobile-nav-button" onclick="scrollToSection('projects')" tabindex="0" title="Projects">📁</button>
+<button class="mobile-nav-button" onclick="scrollToSection('education')" tabindex="0" title="Education">🎓</button>
+</div>
+</nav></main>
+<div class="particles"></div>
+<!-- Navigation Menu -->
+<!-- Mobile Navigation -->
+<div class="container">
+<!-- Hero Section -->
+<section class="hero" id="hero">
+<h1>Harika Bhavani Balagani</h1>
+<p class="subtitle">Software Engineer &amp; Full Stack Developer</p>
+<p class="tagline">Passionate about building meaningful software that makes a difference. I love turning complex problems into elegant solutions and creating applications that people actually enjoy using.</p>
+<div class="contact-info">
+<a class="contact-item" href="tel:913-222-6038" tabindex="0">
                     📞 913-222-6038
                 </a>
-                <a href="mailto:harikabhavanibalagani@gmail.com" class="contact-item">
-                    ✉️ harikabhavanibalagani@gmail.com
+<a class="contact-item" href="mailto:harikabalagani9@gmail.com" tabindex="0">
+                    ✉️ harikabalagani9@gmail.com
                 </a>
-                <span class="contact-item">
+<span class="contact-item">
                     📍 Kansas, USA
                 </span>
+</div>
+</section>
+<!-- Interactive Demo Section -->
+<section class="demo-section" id="demo">
+<h2 class="section-title">🚀 See My Code in Action</h2>
+<p style="margin-bottom: 20px; color: #444; font-size: 1.1rem;">Here's a taste of what I work with daily - click around and explore!</p>
+<div class="api-demo">
+<h4>Backend API Magic</h4>
+<p>This simulates the kind of REST APIs I build at work:</p>
+<div class="demo-buttons">
+<button class="demo-button" onclick="simulateAPI()" tabindex="0">Get Users</button>
+<button class="demo-button" onclick="simulateAuth()" tabindex="0">Login System</button>
+<button class="demo-button" onclick="simulateDatabase()" tabindex="0">Database Query</button>
+</div>
+<div class="demo-output" id="api-output">Ready to demo some backend magic! Click any button above...</div>
+</div>
+<div class="api-demo">
+<h4>Algorithm Playground</h4>
+<p>Watch some of my favorite algorithms work their magic:</p>
+<div class="demo-buttons">
+<button class="demo-button" onclick="sortDemo()" tabindex="0">Quick Sort</button>
+<button class="demo-button" onclick="searchDemo()" tabindex="0">Binary Search</button>
+</div>
+<div class="demo-output" id="algo-output">Let's see some algorithms in action...</div>
+</div>
+</section>
+<!-- Technical Skills Section -->
+<section class="fade-in" id="about" style="padding: 60px 20px; background: linear-gradient(to right, #fdfbfb, #ebedee); text-align: center; border-radius: 12px; margin: 40px auto; max-width: 900px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); color: #1a1a1a; background-color: #fdfdfd;"><h2 style="font-size: 2.4rem; font-weight: bold; color: #333; margin-bottom: 20px;">A Little About Me</h2><p style="max-width: 750px; margin: 0 auto; line-height: 1.7; font-size: 1.15rem; color: #555;">Beyond the lines of code, I'm genuinely captivated by the intersection of technology and human experience. I thrive on the challenge of transforming complex problems into elegant, intuitive solutions. When I'm not architecting systems, you'll often find me sketching out new UI concepts – I believe a truly great application isn't just functional, it's a joy to interact with, down to the last pixel. And yes, a perfectly brewed cup of chai is usually my fuel for those late-night coding sprints!</p><p style="max-width: 750px; margin: 30px auto 0; line-height: 1.7; font-size: 1.05rem; color: #444;">Looking ahead, I'm particularly excited by opportunities to leverage AI and machine learning to build even smarter, more personalized user experiences. I'm always eager to collaborate on projects that push the boundaries of what's possible and create tangible value.</p></section><section class="section-card fade-in" id="skills">
+<h3 class="section-title">💻 My Technical Toolkit</h3>
+<div class="skills-intro">
+                I've been coding for years now, and these are the tools I've grown to love and rely on. Each one has its place in my developer journey!
             </div>
-        </section>
+<div class="skills-grid">
+<div class="skill-group">
+<h4>Backend Development</h4>
+<div class="skill-list">
+<span class="skill-item">Java</span>
+<span class="skill-item">Spring Boot</span>
+<span class="skill-item">Microservices</span>
+<span class="skill-item">REST APIs</span>
+<span class="skill-item">Hibernate</span>
+</div>
+</div>
+<div class="skill-group">
+<h4>Frontend Craft</h4>
+<div class="skill-list">
+<span class="skill-item">Angular</span>
+<span class="skill-item">React.js</span>
+<span class="skill-item">TypeScript</span>
+<span class="skill-item">JavaScript</span>
+</div>
+</div>
+<div class="skill-group">
+<h4>Cloud &amp; DevOps</h4>
+<div class="skill-list">
+<span class="skill-item">AWS</span>
+<span class="skill-item">Docker</span>
+<span class="skill-item">Kubernetes</span>
+<span class="skill-item">Jenkins</span>
+<span class="skill-item">CI/CD</span>
+</div>
+</div>
+<div class="skill-group">
+<h4>Data &amp; Testing</h4>
+<div class="skill-list">
+<span class="skill-item">MySQL</span>
+<span class="skill-item">PostgreSQL</span>
+<span class="skill-item">MongoDB</span>
+<span class="skill-item">JUnit</span>
+<span class="skill-item">Selenium</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="section-card" id="experience">
 
-        <!-- Interactive Demo Section -->
-        <section class="demo-section">
-            <h2 class="section-title">🚀 Live Tech Demonstration</h2>
-            <p style="margin-bottom: 20px; color: #666;">Experience my technical skills through interactive demonstrations:</p>
-            
-            <div class="api-demo">
-                <h4>RESTful API Simulation</h4>
-                <p>Simulate a Spring Boot microservice API call:</p>
-                <button class="demo-button" onclick="simulateAPI()">GET /api/users</button>
-                <button class="demo-button" onclick="simulateAuth()">POST /api/auth</button>
-                <button class="demo-button" onclick="simulateDatabase()">Database Query</button>
-                <div class="demo-output" id="api-output">Click a button to see API response simulation...</div>
-            </div>
 
-            <div class="api-demo">
-                <h4>Algorithm Visualization</h4>
-                <p>See sorting algorithms in action:</p>
-                <button class="demo-button" onclick="sortDemo()">Quick Sort Demo</button>
-                <button class="demo-button" onclick="searchDemo()">Binary Search</button>
-                <div class="demo-output" id="algo-output">Ready to demonstrate algorithms...</div>
-            </div>
-        </section>
 
-        <!-- Skills & Experience Grid -->
-        <div class="section-grid">
-            <!-- Technical Skills -->
-            <div class="section-card">
-                <h3 class="section-title">💻 Technical Arsenal</h3>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h4>Backend Mastery</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">Microservices</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">Hibernate</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Frontend Excellence</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Angular</span>
-                            <span class="skill-tag">React.js</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">JavaScript ES6+</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Cloud & DevOps</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">CI/CD</span>
-                            <span class="skill-tag">Jenkins</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Database & Testing</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">JUnit</span>
-                            <span class="skill-tag">Selenium</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Experience -->
-            <div class="section-card">
-                <h3 class="section-title">🏢 Professional Journey</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h4 style="color: #667eea; margin-bottom: 5px;">Software Developer</h4>
-                        <p style="color: #888; font-size: 0.9rem; margin-bottom: 10px;">Zensar Technologies, India | Jan 2022 - Aug 2023</p>
-                        <ul style="color: #666; line-height: 1.6;">
-                            <li>🔧 Architected RESTful APIs with Spring Boot serving 10K+ daily requests</li>
-                            <li>🎨 Built responsive Angular SPAs with 95% user satisfaction</li>
-                            <li>⚡ Implemented CI/CD pipelines reducing deployment time by 60%</li>
-                            <li>🔒 Integrated advanced security with Spring Security & MFA</li>
-                            <li>📊 Optimized Oracle SQL queries improving performance by 40%</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projects Showcase -->
-        <div class="section-card">
-            <h3 class="section-title">🚀 Featured Projects</h3>
-            
-            <div class="project">
-                <h4>🏥 Secure Health Records Management System</h4>
-                <p class="project-tech">Java • Spring Boot • Angular • Oracle SQL • GitLab CI/CD • Microsoft Entra MFA</p>
-                <p>Enterprise-grade healthcare application with end-to-end encryption, role-based access control, and HIPAA compliance. Features include real-time patient data synchronization, automated backup systems, and comprehensive audit trails.</p>
-            </div>
-
-            <div class="project">
-                <h4>🎓 AI-Powered Learning Management System</h4>
-                <p class="project-tech">Spring Boot • React.js • TensorFlow • AWS Lambda • PostgreSQL</p>
-                <p>Intelligent course platform with personalized learning paths, automated assessment generation, and ML-driven progress tracking. Supports 50K+ concurrent users with 99.9% uptime.</p>
-            </div>
-
-            <div class="project">
-                <h4>💬 Real-Time Collaboration Hub</h4>
-                <p class="project-tech">WebSocket • Spring Boot • Angular • RxJS • Redis • Docker</p>
-                <p>Multi-tenant collaboration platform with instant messaging, file sharing, video calls, and team productivity analytics. Handles 1M+ messages daily with sub-100ms latency.</p>
-            </div>
-
-            <div class="project">
-                <h4>🛡️ Automated Security Testing Framework</h4>
-                <p class="project-tech">Selenium • REST Assured • TestNG • GitLab CI/CD • OWASP ZAP</p>
-                <p>Comprehensive security testing suite with automated vulnerability scanning, penetration testing, and compliance reporting. Reduced security testing time by 80%.</p>
-            </div>
-
-            <div class="project">
-                <h4>📊 Microservices Monitoring Dashboard</h4>
-                <p class="project-tech">Spring Cloud • Kubernetes • Prometheus • Grafana • ELK Stack</p>
-                <p>Real-time monitoring solution for distributed systems with custom metrics, alerting, and predictive analysis. Monitors 100+ microservices across multiple environments.</p>
-            </div>
-        </div>
-
-        <!-- Education & Certifications -->
-        <div class="section-grid">
-            <div class="section-card">
-                <h3 class="section-title">🎓 Education</h3>
-                <div class="project">
-                    <h4>Master's in Computer Science</h4>
-                    <p class="project-tech">University of Central Missouri</p>
-                    <p>Advanced coursework in algorithms, distributed systems, and software architecture.</p>
-                </div>
-                <div class="project">
-                    <h4>Bachelor of Technology - Computer Science</h4>
-                    <p class="project-tech">RGUKT(APIIIT), Nuzvid</p>
-                    <p>Strong foundation in programming, data structures, and system design.</p>
-                </div>
-            </div>
-
-            <div class="section-card">
-                <h3 class="section-title">🏆 Professional Highlights</h3>
-                <div style="color: #666; line-height: 1.8;">
-                    <p>🌟 <strong>Performance Excellence:</strong> Consistently delivered projects 20% ahead of schedule</p>
-                    <p>🔧 <strong>Innovation Leader:</strong> Introduced automation reducing manual testing by 70%</p>
-                    <p>👥 <strong>Team Collaboration:</strong> Mentored 5+ junior developers in best practices</p>
-                    <p>🚀 <strong>Scalability Expert:</strong> Designed systems handling 100K+ concurrent users</p>
-                    <p>🛡️ <strong>Security Focused:</strong> Implemented zero-vulnerability deployment pipelines</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
+<h2 style="font-size: 2.2rem; margin-bottom: 30px; color: #333;">🏢 My Professional Story</h2><div style="background-color: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 850px; margin: 0 auto 30px;"><h3 style="font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px;">Software Developer – JP Morgan Chase &amp; Co.</h3><p style="line-height: 1.7; font-size: 1.1rem; color: #444;">My current role at JP Morgan Chase &amp; Co. has been an incredible deep dive into the world of industrial data processing. It’s been fascinating to witness firsthand how robust technology directly translates into critical business decisions, and I've particularly enjoyed the challenge of optimizing these systems to unlock new efficiencies within the banking sector. Every day here is a new opportunity to learn and contribute to systems that truly make an impact.</p></div></section>
+<!-- Projects Showcase -->
+<section class="section-card fade-in" id="projects">
+<h3 class="section-title">🚀 Projects I'm Proud Of</h3>
+<div class="project">
+<h4>🏥 Secure Health Records System</h4>
+<p class="project-tech">This project, a secure health records system, was born from a desire to truly make a difference in how sensitive patient data is handled. Building it with enterprise-grade security, end-to-end encryption, and ensuring HIPAA compliance was paramount. But beyond the technical rigor, my goal was to create a system that genuinely empowers doctors, offering them real-time data sync and automated backups, so they can focus on patient care with complete peace of mind, knowing their data is unequivocally secure. It was incredibly rewarding to see that vision come to life.</p>
+<p>A healthcare application I built with enterprise-grade security. It handles sensitive patient data with end-to-end encryption and meets HIPAA compliance standards. The real-time sync and automated backups give doctors peace of mind.</p>
+</div>
+<div class="project">
+<h4>🎓 Smart Learning Platform</h4>
+<p class="project-tech">Spring Boot • React.js • TensorFlow • AWS Lambda • PostgreSQL</p>
+<p>An AI-powered course platform that creates personalized learning paths for students. The ML algorithms track progress and suggest content - it's like having a personal tutor for each student. Handles 50K+ users smoothly.</p>
+</div>
+<div class="project">
+<h4>💬 Team Collaboration Hub</h4>
+<p class="project-tech">WebSocket • Spring Boot • Angular • RxJS • Redis • Docker</p>
+<p>A real-time collaboration tool for remote teams. Built instant messaging, file sharing, and video calls into one platform. The sub-100ms latency makes conversations feel natural, and it processes over 1M messages daily.</p>
+</div>
+<div class="project">
+<h4>🛡️ Security Testing Framework</h4>
+<p class="project-tech">Selenium • REST Assured • TestNG • CI/CD • OWASP ZAP</p>
+<p>Automated security testing suite that finds vulnerabilities before they reach production. It integrates with our CI/CD pipeline and has reduced security testing time by 80% - developers love the instant feedback.</p>
+</div>
+<div class="project">
+<h4>📊 Microservices Monitor</h4>
+<p class="project-tech">Spring Cloud • Kubernetes • Prometheus • Grafana • ELK Stack</p>
+<p>Real-time monitoring dashboard for distributed systems. It watches over 100+ microservices and predicts issues before they happen. The custom alerts have saved us from countless midnight emergency calls.</p>
+</div>
+</section>
+<!-- Education & Highlights -->
+<section class="section-card" id="education">
+<h3 class="section-title">🎓 Education &amp; Achievements</h3>
+<div class="project">
+<h4>Master's in Computer Science</h4>
+<p class="project-tech">University of Central Missouri • GPA: 3.44/4</p>
+<p>Dove deep into algorithms, distributed systems, and software architecture. The graduate coursework really shaped how I think about system design.</p>
+</div>
+<div class="project">
+<h4>Bachelor of Technology - Computer Science</h4>
+<p class="project-tech">RGUKT(APIIIT), Nuzvid • GPA: 3.50/4</p>
+<p>Where it all began! Built a solid foundation in programming and data structures that still guides my work today.</p>
+</div></section></div><script>
         // Create floating particles
         function createParticles() {
             const particlesContainer = document.querySelector('.particles');
@@ -694,6 +960,11 @@ Results (3 rows, 0.045 seconds):
                 observer.observe(el);
             });
         });
-    </script>
-</body>
-</html>
+    </script><script>
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script></body></html>
